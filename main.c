@@ -13,6 +13,9 @@ int stackFull(stack *ps);
 int stackEmpty(stack *ps);
 void push(StackEntry item, stack *ps);
 void pop(StackEntry *pe, stack *ps);
+void stackTop(StackEntry *pe, stack *ps);
+int stackSize(stack *ps);
+void clearStack(stack *ps);
 
 int main()
 {
@@ -52,4 +55,19 @@ void pop(StackEntry *pe, stack *ps)
         return;
     }
     *pe = ps->entry[--ps->top];
+}
+
+void stackTop(StackEntry *pe, stack *ps)
+{
+    *pe = ps->entry[(ps->top) - 1];
+}
+
+int stackSize(stack *ps)
+{
+    return ps->top;
+}
+
+void clearStack(stack *ps)
+{
+    ps->top = 0;
 }
