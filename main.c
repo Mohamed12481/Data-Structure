@@ -16,6 +16,7 @@ void pop(StackEntry *pe, stack *ps);
 void stackTop(StackEntry *pe, stack *ps);
 int stackSize(stack *ps);
 void clearStack(stack *ps);
+void traverseStack(stack *ps, void (*pf)(StackEntry));
 
 int main()
 {
@@ -70,4 +71,13 @@ int stackSize(stack *ps)
 void clearStack(stack *ps)
 {
     ps->top = 0;
+}
+
+void traverseStack(stack *ps, void (*pf)(StackEntry))
+{
+    for (int i = (ps->top); i > 0; i--)
+    {
+        (*pf)(ps->entry[i - 1]);
+    }
+    
 }
