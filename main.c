@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "queue.h"
 #include "stack.h"
 
 void printElement(StackEntry e)
@@ -10,6 +11,7 @@ void printElement(StackEntry e)
 
 int main()
 {
+    queue q;
     stack s;
     createStack(&s); 
 
