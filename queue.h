@@ -17,3 +17,4 @@ int queueFull(queue *pq);
 int queueEmpty(queue *pq);
 int queueSize(queue *pq);
 void clearQueue(queue *pq);
+void traversQueue(queue *pq, void (*pf)(QueueEntry));

@@ -44,3 +44,14 @@ void clearQueue(queue *pq)
     pq->rear = -1;
     pq->size = 0;
 }
+
+void traversQueue(queue *pq, void (*pf)(QueueEntry))
+{
+    int pos, s;
+    for (pos = (pq->front), s = 0; s < (pq->size); s++)
+    {
+        (*pf)(pq->entry[pos]);
+        pos = (pos + 1) % MAX_QUEUE;
+    }
+    
+}
