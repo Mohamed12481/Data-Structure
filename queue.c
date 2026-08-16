@@ -11,6 +11,11 @@ void creatQueue(queue *pq)
 
 void append(QueueEntry e, queue *pq)
 {
+    if (queueFull(pq))
+    {
+        return; 
+    }
+    
     pq->rear = ((pq->rear) + 1) % MAX_QUEUE;
     pq->entry[pq->rear] = e;
     (pq->size)++;
@@ -18,9 +23,14 @@ void append(QueueEntry e, queue *pq)
 
 void serve(QueueEntry *pe, queue *pq)
 {
+    if (queueEmpty(pq))
+    {
+        return; 
+    }
+    
     *pe = pq->entry[pq->front];
     pq->front = ((pq->front) + 1) % MAX_QUEUE;
-    (pq->size)++;
+    (pq->size)--;
 }
 
 int queueEmpty(queue *pq)

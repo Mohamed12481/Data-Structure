@@ -14,7 +14,7 @@ int main()
     queue q;
     stack s;
     createStack(&s); 
-
+    printf("------Stack------\n");
     printf("--- Pushing Elements ---\n");
     push(10, &s);
     push(20, &s);
@@ -45,6 +45,50 @@ int main()
     if (stackEmpty(&s))
     {
         printf("Stack is now completely empty. Size: %d\n", stackSize(&s));
+    }
+    printf("=============Now Stack is Done!=============\n");
+
+
+    printf("\n\n\n------Queue------\n");
+    creatQueue(&q);
+    printf("[Internal] Front: %d | Rear: %d | Size: %d\n\n", q.front, q.rear, q.size);
+
+    printf("===  Appending 3 Elements (10, 20, 30) ===\n");
+    append(10, &q);
+    append(20, &q);
+    append(30, &q);
+    
+    printf("Queue contents: \n");
+    traversQueue(&q, printElement);
+    printf("\n[Internal] Front: %d | Rear: %d | Size: %d\n\n", q.front, q.rear, q.size);
+
+    printf("===  Serving 2 Elements ===\n");
+    QueueEntry temp;
+    serve(&temp, &q); 
+    printf("Served: %d\n", temp);
+    serve(&temp, &q); 
+    printf("Served: %d\n", temp);
+    
+    printf("Queue contents: ");
+    traversQueue(&q, printElement);
+    printf("\n[Internal] Front: %d | Rear: %d | Size: %d\n\n", q.front, q.rear, q.size);
+
+    printf("===  Forcing the Circular Wrap-around ===\n");
+    printf("Appending 3 more elements (40, 50, 60)...\n");
+    
+    append(40, &q); 
+    append(50, &q); 
+    append(60, &q); 
+
+    printf("Queue contents: ");
+    traversQueue(&q, printElement);
+    printf("\n[Internal] Front: %d | Rear: %d | Size: %d\n\n", q.front, q.rear, q.size);
+
+    printf("===  Testing Overflow Protection ===\n");
+    if (queueFull(&q)) {
+        printf("Queue is FULL! Cannot add more elements.\n");
+    } else {
+        printf("Queue is not full.\n");
     }
 
     return 0;
